@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Dossiê – Ballet Clássico</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+  <main class="container">
+    <h1>Espetáculos de Ballet Clássico</h1>
+    <p class="muted">Cole os <strong>dados do público</strong> (ex.: “60% Tchaikovsky, sábado 20h, 18–35, Instagram/Reels, sensível a preço”).</p>
+
+    {% if error %}<div class="alert">{{ error }}</div>{% endif %}
+
+    <form method="post" action="{{ url_for('gerar') }}" class="card">
+      <label for="dados_publico">Dados do público</label>
+      <textarea id="dados_publico" name="dados_publico" rows="8" placeholder="Ex.: 65% Tchaikovsky; sábado 20h; 18–35; Instagram/Reels; sensível a preço"></textarea>
+      <button type="submit">Gerar Dossiê</button>
+    </form>
+
+    <footer>Feito por você + multiagentes 😊</footer>
+  </main>
+</body>
+</html>

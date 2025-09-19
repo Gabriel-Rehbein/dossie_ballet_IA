@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Dossiê – Resultado</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+  <main class="container">
+    <header class="header-row">
+      <h1>Dossiê – Ballet Clássico</h1>
+      <div class="actions">
+        <form method="post" action="{{ url_for('download_json') }}">
+          <input type="hidden" name="json_payload" value="{{ json_payload|tojson|safe }}">
+          <button type="submit">Baixar JSON</button>
+        </form>
+        <form method="post" action="{{ url_for('download_md') }}">
+          <input type="hidden" name="md_payload" value="{{ md_payload }}">
+          <button type="submit">Baixar Markdown</button>
+        </form>
+      </div>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Programa</h2>
+        <pre>{{ programa }}</pre>
+      </article>
+
+      <article class="card">
+        <h2>Release</h2>
+        <pre>{{ release }}</pre>
+      </article>
+
+      <article class="card">
+        <h2>Cronograma Técnico</h2>
+        <pre>{{ cronograma }}</pre>
+      </article>
+
+      <article class="card">
+        <h2>Relação entre Dados e Decisões</h2>
+        <pre>{{ relacao }}</pre>
+      </article>
+
+      <article class="card">
+        <h2>Dados do Público (Bruto)</h2>
+        <pre>{{ dados_publico }}</pre>
+      </article>
+
+      <article class="card">
+        <h2>Audience (Estruturado)</h2>
+        <pre>{{ audiencia_struct }}</pre>
+      </article>
+
+      <article class="card">
+        <h2>Implicações</h2>
+        <pre>{{ implicacoes }}</pre>
+      </article>
+    </section>
+
+    <p><a href="{{ url_for('index') }}">← Voltar e gerar novamente</a></p>
+  </main>
+</body>
+</html>
